@@ -1,10 +1,13 @@
 name: Go
 
-on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+# From https://github.com/actions/starter-workflows/blob/main/ci/go.yml
+# on:
+#   push:
+#     branches: [ $default-branch ]
+#   pull_request:
+#     branches: [ $default-branch ]
+
+on: [push]
 
 jobs:
 

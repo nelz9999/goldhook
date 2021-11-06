@@ -9,9 +9,9 @@ import (
 	"gopkg.in/launchdarkly/go-sdk-common.v2/ldvalue"
 )
 
-// Subscriber is interested in knowing the details about the results of
+// Observer is interested in knowing the details about the results of
 // a feature flag evaluation.
-type Subscriber interface {
+type Observer interface {
 	// Observer is invoked with information concerning a feature flag evaluation
 	//
 	// If, at the callsite, the consumer did not take the pains to call the
@@ -28,8 +28,8 @@ type Subscriber interface {
 	)
 }
 
-// SubsriberFunc is a function adapter for the Subscriber interface
-type SubscriberFunc func(
+// SubsriberFunc is a function adapter for the Observer interface
+type ObserverFunc func(
 	ctx context.Context,
 	key string,
 	user lduser.User,
@@ -39,8 +39,8 @@ type SubscriberFunc func(
 	evalErr error,
 )
 
-// Observe conforms to the Subscriber interface
-func (fn SubscriberFunc) Observe(
+// Observe conforms to the Observer interface
+func (fn ObserverFunc) Observe(
 	ctx context.Context,
 	key string,
 	user lduser.User,

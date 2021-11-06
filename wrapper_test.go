@@ -27,7 +27,7 @@ func TestObservable(t *testing.T) {
 	}
 
 	observed := map[string]bool{}
-	hook := goldhook.SubscriberFunc(
+	hook := goldhook.ObserverFunc(
 		func(
 			ctx context.Context,
 			key string,

@@ -12,11 +12,11 @@ import (
 
 type ObservedEvaluator struct {
 	client Evaluator
-	hooks  []Subscriber
+	hooks  []Observer
 	ctx    context.Context
 }
 
-func NewEvaluator(client Evaluator, subscribers ...Subscriber) (*ObservedEvaluator, error) {
+func NewEvaluator(client Evaluator, subscribers ...Observer) (*ObservedEvaluator, error) {
 	if client == nil {
 		return nil, fmt.Errorf("client must not be nil")
 	}

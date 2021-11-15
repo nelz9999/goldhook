@@ -55,6 +55,7 @@ func TestObservable(t *testing.T) {
 	)
 
 	hooked, err := goldhook.NewEvaluator(
+		context.Background(),
 		// this implicitly tests that the Evaluator interface
 		// correctly describes the LDClient
 		client,

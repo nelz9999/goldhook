@@ -16,7 +16,7 @@ type ObservedEvaluator struct {
 	ctx    context.Context
 }
 
-func NewEvaluator(client Evaluator, subscribers ...Observer) (*ObservedEvaluator, error) {
+func NewEvaluator(ctx context.Context, client Evaluator, subscribers ...Observer) (*ObservedEvaluator, error) {
 	if client == nil {
 		return nil, fmt.Errorf("client must not be nil")
 	}
@@ -30,7 +30,7 @@ func NewEvaluator(client Evaluator, subscribers ...Observer) (*ObservedEvaluator
 	return &ObservedEvaluator{
 		client: client,
 		hooks:  subscribers,
-		ctx:    context.Background(),
+		ctx:    ctx,
 	}, nil
 }
 

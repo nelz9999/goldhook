@@ -57,14 +57,37 @@ func (fn ObserverFunc) Observe(
 type Evaluator interface {
 	BoolVariation(key string, ldctx ldcontext.Context, defaultVal bool) (bool, error)
 	BoolVariationDetail(key string, ldctx ldcontext.Context, defaultVal bool) (bool, ldreason.EvaluationDetail, error)
+
 	Float64Variation(key string, ldctx ldcontext.Context, defaultVal float64) (float64, error)
 	Float64VariationDetail(key string, ldctx ldcontext.Context, defaultVal float64) (float64, ldreason.EvaluationDetail, error)
+
 	IntVariation(key string, ldctx ldcontext.Context, defaultVal int) (int, error)
 	IntVariationDetail(key string, ldctx ldcontext.Context, defaultVal int) (int, ldreason.EvaluationDetail, error)
+
 	JSONVariation(key string, ldctx ldcontext.Context, defaultVal ldvalue.Value) (ldvalue.Value, error)
 	JSONVariationDetail(key string, ldctx ldcontext.Context, defaultVal ldvalue.Value) (ldvalue.Value, ldreason.EvaluationDetail, error)
+
 	StringVariation(key string, ldctx ldcontext.Context, defaultVal string) (string, error)
 	StringVariationDetail(key string, ldctx ldcontext.Context, defaultVal string) (string, ldreason.EvaluationDetail, error)
+}
+
+// EvaluatorCtx is the interface that describes the `context.Context`-aware subset of methods on an
+// LDClient, which our wrapper invokes to retrieve the value of individual flags.
+type EvaluatorCtx interface {
+	BoolVariationCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal bool) (bool, error)
+	BoolVariationDetailCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal bool) (bool, ldreason.EvaluationDetail, error)
+
+	Float64VariationCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal float64) (float64, error)
+	Float64VariationDetailCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal float64) (float64, ldreason.EvaluationDetail, error)
+
+	IntVariationCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal int) (int, error)
+	IntVariationDetailCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal int) (int, ldreason.EvaluationDetail, error)
+
+	JSONVariationCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal ldvalue.Value) (ldvalue.Value, error)
+	JSONVariationDetailCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal ldvalue.Value) (ldvalue.Value, ldreason.EvaluationDetail, error)
+
+	StringVariationCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal string) (string, error)
+	StringVariationDetailCtx(c context.Context, key string, ldctx ldcontext.Context, defaultVal string) (string, ldreason.EvaluationDetail, error)
 }
 
 type ContextualEvaluator interface {

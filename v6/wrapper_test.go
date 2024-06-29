@@ -12,7 +12,7 @@ import (
 	"github.com/launchdarkly/go-sdk-common/v3/ldreason"
 	"github.com/launchdarkly/go-sdk-common/v3/lduser"
 	"github.com/launchdarkly/go-sdk-common/v3/ldvalue"
-	ld "github.com/launchdarkly/go-server-sdk/v6"
+	ld "github.com/launchdarkly/go-server-sdk/v7"
 
 	"github.com/nelz9999/goldhook/v6"
 )
